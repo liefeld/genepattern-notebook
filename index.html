@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>GenePattern Notebook by genepattern</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>GenePattern Notebook</h1>
+        <p>Code for the GenePattern Notebook</p>
+
+        <p class="view"><a href="https://github.com/genepattern/genepattern-notebook">View the Project on GitHub <small>genepattern/genepattern-notebook</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/genepattern/genepattern-notebook/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/genepattern/genepattern-notebook/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/genepattern/genepattern-notebook">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="genepattern-notebook" class="anchor" href="#genepattern-notebook" aria-hidden="true"><span class="octicon octicon-link"></span></a>GenePattern Notebook</h1>
+
+<p>Some notes on setup of GenePattern Notebook environment.</p>
+
+<p><strong>IMPORTANT: The current version of the code only works with GenePattern 3.9.3 and up! 
+We recommend GenePattern 3.9.4 (the latest version), as this version fixes a bug in the 
+server than can cause the Notebook to double prompt for authentication.</strong></p>
+
+<h1>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h1>
+
+<h2>
+<a id="install-python" class="anchor" href="#install-python" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install Python</h2>
+
+<p>In order to get the GenePattern Notebook working you will first need to install a compatible 
+version of Python. This means you will need either Python 2.7 or Python 3.4+.</p>
+
+<p><strong>Note for Mac Users:</strong> Mac comes with Python, but - depending on the version OSX you have - 
+you may have to update to a new version. To do this I would recommend using a package manager 
+such as Homebrew or MacPorts.</p>
+
+<p>You may wish to install the Anaconda distribution of Python from Continuum Analytics. This is 
+a scientific version of Python that ships with many of the most popular Python packages for 
+science, math and data analysis (ex: NumPy, SciPy, Pandas, Matplotlib, IPython, etc.).</p>
+
+<h2>
+<a id="install-pip" class="anchor" href="#install-pip" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install PIP</h2>
+
+<p>Install PIP (Python Package Index) if not already installed (PIP may come with Anaconda 
+distribution; see <a href="https://pip.pypa.io/en/latest/installing.html">https://pip.pypa.io/en/latest/installing.html</a>). This is Python's preferred 
+package management system.</p>
+
+<h2>
+<a id="install-ipython-notebook" class="anchor" href="#install-ipython-notebook" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install IPython Notebook</h2>
+
+<p>Next install IPython Notebook. This can easily be done from PIP by executing the following 
+line of code from the terminal.</p>
+
+<blockquote>
+<p>pip install "ipython[notebook]"</p>
+</blockquote>
+
+<h2>
+<a id="install-genepattern-python-library" class="anchor" href="#install-genepattern-python-library" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install GenePattern Python Library</h2>
+
+<p>The GenePattern Notebook uses the GenePattern Python Library for many of its calls. This 
+library can be installed from PIP by running the following command:</p>
+
+<blockquote>
+<p>pip install genepattern-python</p>
+</blockquote>
+
+<h2>
+<a id="install-genepattern-notebook" class="anchor" href="#install-genepattern-notebook" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install GenePattern Notebook</h2>
+
+<p>For the time being, the best way to install the GenePattern Notebook is by cloning the GitHub 
+repository and then copying over some files from the checkout to your IPython profile. The 
+GenePattern Notebook repository can be cloned by executing the following command:</p>
+
+<blockquote>
+<p>git clone <a href="https://github.com/broadinstitute/GenePatternNotebook.git">https://github.com/broadinstitute/GenePatternNotebook.git</a></p>
+</blockquote>
+
+<p><strong>As the GenePattern Notebook is not yet public, at this time you must be a member of the 
+GenePattern team to access the repository.</strong></p>
+
+<p>Next, you must copy over the GenePattern Notebook extension to your IPython profile. Your 
+profile is by default found at ~/.ipython - a hidden directory under your user directory.
+You will need to copy the client-side files needed to display the GenePattern widgets. 
+From the cloned repository (whose root folder is GenePatternNotebook):</p>
+
+<blockquote>
+<p>cp GenePatternNotebook/profile/profile_default/static/custom/* ~/.ipython/profile_default/static/custom/</p>
+</blockquote>
+
+<h2>
+<a id="launch-ipython" class="anchor" href="#launch-ipython" aria-hidden="true"><span class="octicon octicon-link"></span></a>Launch IPython</h2>
+
+<p>Finally, you may launch the IPython notebook by issuing the following command at the terminal:</p>
+
+<blockquote>
+<p>ipython notebook</p>
+</blockquote>
+
+<p>This will start up the notebook kernel from and launch your web browser, pointing to the Notebook.</p>
+
+<h2>
+<a id="note-for-rna-seq-notebook-users" class="anchor" href="#note-for-rna-seq-notebook-users" aria-hidden="true"><span class="octicon octicon-link"></span></a>Note for RNA-seq Notebook Users</h2>
+
+<p>The RNA-seq Notebook requires an additional Python package known as jsonpickle. This package allows 
+the notebook to store results in memory using a JSON data format. This package may be installed by 
+executing the following line of code from a terminal.</p>
+
+<blockquote>
+<p>pip install -U jsonpickle</p>
+</blockquote>
+
+<h1>
+<a id="known-issues" class="anchor" href="#known-issues" aria-hidden="true"><span class="octicon octicon-link"></span></a>Known Issues</h1>
+
+<p>There is a known issue that can cause JavaScript visualizers to not display propertly unless a user 
+first logs into the main GenePattern interface from the same browser before using them in the 
+GenePattern Notebook. This is due to a security model issue in the GenePattern server. A fix is 
+planned for the upcoming GenePattern 3.9.5 release.</p>
+
+<h1>
+<a id="feature-support" class="anchor" href="#feature-support" aria-hidden="true"><span class="octicon octicon-link"></span></a>Feature Support</h1>
+
+<p>Most common GenePattern features are supported from the GenePattern Notebook. A few, however, have 
+yet to be implemented. GenePattern features that are not yet supported are:</p>
+
+<ul>
+<li>Batch job submission</li>
+<li>GenomeSpace integration</li>
+<li>Pipeline child job output</li>
+<li>Dynamically updated choice parameters</li>
+<li>Parameter groups</li>
+</ul>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/genepattern">genepattern</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
