@@ -61,30 +61,27 @@ RUN curl -O https://bootstrap.pypa.io/get-pip.py && \
     pip2 --no-cache-dir install requests[security] && \
     pip3 --no-cache-dir install requests[security]
 
-RUN pip3 install jupyter  
-RUN pip3 install urllib
 
-#RUN pip3 install -i https://testpypi.python.org/pypi genepattern-notebook
+#RUN pip3 install ipython[all]==3.2
+RUN pip3 install jupyter
+
+#RUN pip2 install -i https://testpypi.python.org/pypi genepattern-notebook && \
+#	pip install -i https://testpypi.python.org/pypi genepattern-notebook && \
+#	pip3 install -i https://testpypi.python.org/pypi genepattern-notebook
+
+RUN pip3 install -i https://testpypi.python.org/pypi genepattern-notebook
 
 
 #add a notebook profile
 RUN mkdir -p -m 700 /root/.jupyter/ && \
     echo "c.NotebookApp.ip = '*'" >> /root/.jupyter/jupyter_notebook_config.py
 
-RUN ipython profile create default
-
-COPY custom.js /root/.ipython/profile_default/custom.js
-
-RUN mkdir /root/.jupyter/custom
-
-COPY custom.js /root/.jupyter/custom/custom.js
-
 VOLUME /notebooks
 WORKDIR /notebooks
-VOLUME /root/.jupyter/custom
+
 
 EXPOSE 8888
 
 ENTRYPOINT ["tini", "--"]
-CMD ["ipython", "notebook", "--port=8888", "--no-browser", "--ip=0.0.0.0", "--profile=default"]
+CMD ["ipython", "notebook", "--port=8888", "--no-browser", "--ip=0.0.0.0"]
 
